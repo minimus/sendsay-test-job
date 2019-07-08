@@ -1,0 +1,130 @@
+body {
+  margin: 0;
+  background: #f7f7f7;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0 0 0;
+}
+
+.input-form {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0 0 0;
+  padding: 15px;
+  width: 800px;
+  border: 1px solid #dcdada;
+  border-radius: 5px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-form__holder {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-form__input {
+  width: 100%;
+}
+
+.input-form__buttons-holder {
+  display: flex;
+}
+
+.input-form__buttons-holder__button {
+  margin: 0 5px 0 0;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0 0 0;
+  padding: 15px;
+  width: 800px;
+  border: 1px solid #dcdada;
+  border-radius: 5px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.todo-list__item {
+  margin: 5px;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 50px auto 25px;
+  grid-template-rows: 30px auto;
+  grid-template-areas: "icon title toolbar" "icon task toolbar";
+  grid-gap: 3px;
+  /* background: #f0f9f1; */
+  border: 1px solid #e4e1e1;
+  border-radius: 5px;
+  /* box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1); */
+}
+
+.todo-list__item.item-completed {
+  background: #f4fbf1;
+}
+
+.todo-list__item.item-not-completed {
+  background: #fbf8f1;
+}
+
+.todo-list__item__icon {
+  grid-area: icon;
+}
+
+.todo-list__item__icon.item-completed {
+  color: #0f900f;
+}
+
+.todo-list__item__icon.item-not-completed {
+  color: #e09915;
+}
+
+.todo-list__item__title {
+  grid-area: title;
+}
+
+.todo-list__item__task {
+  grid-area: task;
+}
+
+.todo-list__item__toolbar {
+  grid-area: toolbar;
+}
+
+.todo-list__item__toolbar__button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  line-height: 18px;
+  width: 20px;
+}
+
+.todo-list__item__toolbar__button:focus {
+  outline: none;
+}
+
+.todo-list__item__toolbar__button .material-icons:hover {
+  color: #f3052f;
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
