@@ -59,7 +59,7 @@ function arrayBufferToString(arrayBuffer, decoderType = 'utf-8') {
 }
 
 function readFileAsync(file) {
-  return Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     const reader = new FileReader()
     reader.onload = () => {
       resolve(reader.result)
