@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'San Francisco Text Light';
+  src: url('SFUIText-Light.eot');
+  src: url('SFUIText-Light.eot?#iefix') format('embedded-opentype'),
+  url('SFUIText-Light.woff') format('woff'),
+  url('SFUIText-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'San Francisco Text Light Italic';
+  src: url('SFUIText-LightItalic.eot');
+  src: url('SFUIText-LightItalic.eot?#iefix') format('embedded-opentype'),
+  url('SFUIText-LightItalic.woff') format('woff'),
+  url('SFUIText-LightItalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'San Francisco Text Regular';
+  src: url('SFUIText-Regular.eot');
+  src: url('SFUIText-Regular.eot?#iefix') format('embedded-opentype'),
+  url('SFUIText-Regular.woff') format('woff'),
+  url('SFUIText-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'San Francisco Text Italic';
+  src: url('SFUIText-Italic.eot');
+  src: url('SFUIText-Italic.eot?#iefix') format('embedded-opentype'),
+  url('SFUIText-Italic.woff') format('woff'),
+  url('SFUIText-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

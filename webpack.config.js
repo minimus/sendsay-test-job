@@ -46,7 +46,7 @@ module.exports = {
       template: './src/index.html',
     }),
   ],
-  /*resolve: {
+  /* resolve: {
     extensions: ['.js', '.json', '.less', '.sass', '.scss', '.css'],
-  },*/
+  }, */
 }

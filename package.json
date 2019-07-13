@@ -13,11 +13,11 @@
     "make_styles": "postcss src/style.css -o ./css/style.css"
   },
   "dependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
     "@babel/preset-react": "^7.0.0",
-    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-proposal-export-default-from": "^7.5.2",
     "babel-preset-react-app": "^9.0.0",
     "@babel/register": "^7.4.4",
     "babel-loader": "^8.0.6",
@@ -27,12 +27,12 @@
     "babel-polyfill": "^6.26.0",
     "babel-plugin-root-import": "^6.2.0",
     "classnames": "^2.2.6",
-    "npm": "^6.10.0",
+    "npm": "^6.10.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
-    "redux": "^4.0.1",
+    "redux": "^4.0.4",
     "redux-logger": "^3.0.6"
   },
   "devDependencies": {
@@ -53,10 +53,10 @@
     "less-loader": "^5.0.0",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
-    "postcss-preset-env": "^6.6.0",
+    "postcss-preset-env": "^6.7.0",
     "style-loader": "^0.23.1",
     "sugarss": "^2.0.0",
-    "webpack": "^4.35.2",
+    "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5",
     "webpack-node-externals": "^1.7.2"
   }
