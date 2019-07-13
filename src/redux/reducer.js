@@ -1,7 +1,7 @@
 import {
   BUTTON_FILES_CLICKED, BUTTON_SUBMIT_CLICKED,
   INPUT_FROM_MAIL,
-  INPUT_FROM_NAME, INPUT_GETTING_FILES,
+  INPUT_FROM_NAME, INPUT_GETTING_FILES, INPUT_PROCESSING_FILES_FINISHED,
   INPUT_TO_MAIL,
   INPUT_TO_MESSAGE,
   INPUT_TO_NAME,
@@ -73,6 +73,9 @@ export default function (state = initialState, action) {
         readyToGetFiles: false,
       }
     }
+
+    case INPUT_PROCESSING_FILES_FINISHED:
+      return { ...state, files: [], attachments: action.payload }
 
     case BUTTON_SUBMIT_CLICKED:
       return state

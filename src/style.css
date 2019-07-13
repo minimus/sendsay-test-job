@@ -20,11 +20,20 @@ body {
   width: 800px;
 }
 
+.main__logo {
+  width: 100%;
+}
+
+.main__logo-image {
+  width: 230px;
+  height: 60px;
+}
+
 .input-form {
   position: relative;
   display: flex;
   flex-direction: column;
-  margin: 30px 0 0 0;
+  margin: 20px 0 0 0;
   padding: 30px;
   width: 800px;
   border: 1px solid #dcdada;
@@ -187,6 +196,55 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.input-form__attachments__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 365px;
+  height: 50px;
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.input-form__attachments__item-image {
+  width: 32px;
+  height: auto;
+}
+
+.input-form__attachments__item-name {
+  width: 100%;
+  padding: 0 16px;
+}
+
+.input-form__attachments__item-delete {
+  width: 83px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  font-size: 16px;
+  line-height: 20px;
+  color: red;
+  background: white;
+  border: none;
+}
+
+.input-form__attachments__item-delete:focus {
+  outline: none;
+}
+
+.input-form__attachments__item-bin {
+  width: 13px;
+  height: 16px;
+}
+
+.input-form__attachments__item-text {
+  padding: 0 0 0 6px;
 }
 
 /*.input-form .input-form__submit-button:focus {

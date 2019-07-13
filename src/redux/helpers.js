@@ -1,30 +1,26 @@
 const BYTES_5MB = 5242880
 const BYTES_20MB = 20971520
 
-export function checkInputFields(name = '', mail = '') {
+export const checkInputFields = (name = '', mail = '') => {
   if ((name && mail) || (!name && !mail)) return [false, false]
   if (!name && mail) return [true, false]
   return [false, true]
 }
 
-export function isValidMail(mail) {
-  return /^.+@.+$/.test(mail)
-}
+export const isValidMail = mail => /^.+@.+$/.test(mail)
 
-export function allowToSubmit({
+export const allowToSubmit = ({
   fromName, fromMail, toName, toMail, toSubject, toMessage,
-}) {
-  return (
-    !!fromName
+}) => (
+  !!fromName
     && !!fromMail
     && !!toName
     && !!toMail
     && !!toSubject
     && !!toMessage
-  )
-}
+)
 
-function validkMimeType(type) {
+const validkMimeType = (type) => {
   const types = [
     'application/x-compressed',
     'application/x-zip-compressed',
@@ -41,7 +37,7 @@ function validkMimeType(type) {
   return types.indexOf(type) > -1
 }
 
-export function checkFiles(files) {
+export const checkFiles = (files) => {
   let filesSize = 0
   for (const file of files) {
     const { size, type } = file
@@ -53,24 +49,33 @@ export function checkFiles(files) {
   return ''
 }
 
-function arrayBufferToString(arrayBuffer, decoderType = 'utf-8') {
+const arrayBufferToString = (arrayBuffer, decoderType = 'utf-8') => {
   const decoder = new TextDecoder(decoderType)
   return decoder.decode(arrayBuffer)
 }
 
-function readFileAsync(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader()
-    reader.onload = () => {
-      resolve(reader.result)
-    }
-    reader.onerror = reject
+const readFileAsync = file => new Promise((resolve, reject) => {
+  const reader = new FileReader()
+  reader.onload = () => {
+    const data = arrayBufferToString(reader.result)
+    resolve({ name: file.name, data: window.btoa(unescape(encodeURIComponent(data))) })
+  }
+  reader.onerror = reject
 
-    reader.readAsArrayBuffer(file)
-  })
+  reader.readAsArrayBuffer(file)
+})
+
+export const processFiles = async files => Promise.all([...files].map(item => readFileAsync(item)))
+
+export const shortenString = (str, len) => {
+  if (str.length <= len) return str
+  const out = str.slice(0, len + 1)
+  const lastIdx = out.lastIndexOf(' ')
+  return `${(lastIdx === -1) ? out : out.slice(0, lastIdx)}...`
 }
 
-export async function processFiles(files) {
-  const filesData = [...files]
-  return Promise.all(filesData.map(item => readFileAsync(item)))
+export const fileNameParts = (fileName) => {
+  const name = fileName.slice(0, fileName.lastIndexOf('.'))
+  const ext = fileName.slice(fileName.lastIndexOf('.') + 1)
+  return [name, ext]
 }

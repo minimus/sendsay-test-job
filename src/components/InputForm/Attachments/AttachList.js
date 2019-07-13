@@ -5,6 +5,7 @@ import {
   INPUT_PROCESSING_FILES_STARTED,
 } from '../../../redux/actions'
 import { processFiles } from '../../../redux/helpers'
+import AttItem from './AttachmentItem'
 
 const AttachList = () => {
   const fileErrorFeedback = useSelector(state => state.fileErrorFeedback)
@@ -25,11 +26,12 @@ const AttachList = () => {
           console.log(e)
         })
     }
-  }, [files, attachments, dispatch])
+  }, [files, dispatch])
 
   return (
     <div className="input-form__attachments">
       {fileErrorFeedback && <span className="input-form__files-feedback">{fileErrorFeedback}</span>}
+      {attachments.map((item, idx) => <AttItem key={idx.toString()} name={item.name} idx={idx} />)}
     </div>
   )
 }

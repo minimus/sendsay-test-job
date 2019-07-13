@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 // import { useSelector, useDispatch } from 'react-redux'
 import {  } from './redux/actions'
 import InputForm from './components/InputForm/InputForm'
+import Logo from './components/Logo'
 
 export default function App() {
   // const list = useSelector(state => state.list)
@@ -15,6 +16,7 @@ export default function App() {
 
   return (
     <article id="main" className="main">
+      <Logo />
       <InputForm />
     </article>
   )
