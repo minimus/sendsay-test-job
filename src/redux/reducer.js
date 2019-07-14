@@ -6,9 +6,9 @@ import {
   INPUT_TO_MAIL,
   INPUT_TO_MESSAGE,
   INPUT_TO_NAME,
-  INPUT_TO_SUBJECT,
+  INPUT_TO_SUBJECT, MESSAGE_SUBMIT_FINISHED, MESSAGE_SUBMIT_STARTED,
 } from './actions'
-import { allowToSubmit, checkFiles } from './helpers'
+import { allowToSubmit, checkFiles, formatDate } from './helpers'
 
 const initialState = {
   fromName: '',
@@ -19,14 +19,32 @@ const initialState = {
   toMessage: '',
   readyToGetFiles: false,
   canSubmit: false,
+  shouldSubmit: false,
+  submitting: false,
   files: [],
   attachments: [],
   fileErrorFeedback: '',
   messages: [
-    { date: '30 сентября', subject: 'bla', status: 0 },
-    { date: '30 декабря', subject: 'Тема письма, которая не поместилась в эту строку потому, что не поместилась', status: -1 },
-    { date: '30 сентября', subject: 'Тема письма, которая не поместилась в эту строку потому, что как-то не так поместилась', status: -2 },
+    {
+      date: '30 сентября',
+      subject: 'Bla-bla-bla',
+      status: 0,
+      trackId: '8888',
+    },
+    {
+      date: '30 декабря',
+      subject: 'Тема письма, которая не поместилась в эту строку потому, что не поместилась',
+      status: -1,
+      trackId: '8889',
+    },
+    {
+      date: '30 сентября',
+      subject: 'Тема письма, которая не поместилась в эту строку потому, что как-то не так поместилась',
+      status: -2,
+      trackId: '8890',
+    },
   ],
+  queue: [],
 }
 
 export default function (state = initialState, action) {
@@ -93,7 +111,24 @@ export default function (state = initialState, action) {
     }
 
     case BUTTON_SUBMIT_CLICKED:
-      return state
+      return { ...state, shouldSubmit: true }
+
+    case MESSAGE_SUBMIT_STARTED:
+      return { ...state, shouldSubmit: false, submitting: true }
+
+    case MESSAGE_SUBMIT_FINISHED: {
+      const messages = [...state.messages]
+      const queue = [...state.queue]
+      const { toSubject: subject } = state
+      const date = formatDate(new Date())
+      const { trackId = '', status = 0 } = action.payload
+      queue.push(trackId)
+      messages.push({
+        date, subject, status, trackId,
+      })
+
+      return { ...state, messages }
+    }
 
     default:
       return state

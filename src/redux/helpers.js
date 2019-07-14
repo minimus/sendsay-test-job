@@ -1,5 +1,26 @@
+import Sendsay from 'sendsay-api'
+
 const BYTES_5MB = 5242880
 const BYTES_20MB = 20971520
+
+export const formatDate = (date) => {
+  const months = [
+    'Января',
+    'Февраля',
+    'Марта',
+    'Апреля',
+    'Мая',
+    'Июня',
+    'Июля',
+    'Августа',
+    'Сентября',
+    'Октября',
+    'Ноября',
+    'Декабря',
+  ]
+
+  return `${date.getDate()} ${months[date.getMonth()]}`
+}
 
 export const checkInputFields = (name = '', mail = '') => {
   if ((name && mail) || (!name && !mail)) return [false, false]
@@ -78,4 +99,72 @@ export const fileNameParts = (fileName) => {
   const name = fileName.slice(0, fileName.lastIndexOf('.'))
   const ext = fileName.slice(fileName.lastIndexOf('.') + 1)
   return [name, ext]
+}
+
+export const sendMessage = async (state) => {
+  console.log('start')
+  const sendsay = new Sendsay({ apiUrl: 'https://api.sendsay.ru/clu180' })
+  console.log(sendsay)
+  const loginData = await sendsay.login({
+    login: 'minimus@simplelib.com',
+    sublogin: 'minimus@simplelib.com',
+    password: 'de8Rooh',
+  })
+  console.log(loginData)
+
+  const {
+    fromName, fromMail, toName, toMail, toSubject, toMessage, attachments,
+  } = state
+  const attaches = attachments.map(item => ({ name: item.name, content: item.data, encoding: 'base64' }))
+
+  const req = {
+    action: 'issue.send.test',
+    letter: {
+      subject: toSubject,
+      'from.name': fromName,
+      'from.email': fromMail,
+      'to.name': toName,
+      message: { text: toMessage },
+      attaches,
+    },
+    sendwhen: 'test',
+    mca: [
+      toMail,
+    ],
+  }
+
+  /* const headers = new Headers()
+  headers.append('Content-Type', 'application/json') */
+
+  /* const params = {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+    credentials: 'omit',
+    body: JSON.stringify(bodyData),
+  }
+
+  const req = new Request('https://api.sendsay.ru/clu180', params)
+
+  try {
+    const data = await window.fetch(req)
+    const { 'track.id': trackId } = data
+    console.log(data)
+    return { trackId, status: 0 }
+  } catch (e) {
+    throw new Error(e)
+  } */
+
+  try {
+    const data = await sendsay.request(req)
+    const { 'track.id': trackId } = data
+    console.log(data)
+    const statusData = await sendsay.request({ action: 'track.get', id: trackId, session: 'session' })
+    const { obj: { status } } = statusData
+    return { trackId, status }
+  } catch (e) {
+    throw new Error(e)
+  }
 }
