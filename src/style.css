@@ -229,9 +229,13 @@ body {
   display: flex;
   font-size: 16px;
   line-height: 20px;
-  color: red;
+  color: #ff6666;
   background: white;
   border: none;
+}
+
+.input-form__attachments__item-delete:hover {
+  color: #ff6666d9;
 }
 
 .input-form__attachments__item-delete:focus {
@@ -247,10 +251,64 @@ body {
   padding: 0 0 0 6px;
 }
 
-/*.input-form .input-form__submit-button:focus {
-  border: 2px solid #45A6FF;
-  box-shadow: none;
-}*/
+.result-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1.875rem;
+}
+
+.result-list__h1 {
+  font-size: 1.5rem;
+  line-height: 1.875rem;
+  margin-bottom: 0;
+}
+
+.result-list__results {
+  margin-top: 1.25rem;
+}
+
+.result-table__header {
+  display: flex;
+  width: 100%;
+  padding-bottom: 10px;
+  color: #00000066;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+.result-table__header :nth-child(1) {
+  width: 100px;
+}
+
+.result-table__header :nth-child(2) {
+  flex: auto;
+}
+
+.result-table__row {
+  margin: 10px 0;
+  display: flex;
+  width: 100%;
+}
+
+.result-table__row :nth-child(1) {
+  width: 100px;
+}
+
+.result-table__row :nth-child(2) {
+  flex: auto;
+}
+
+.result-table__row .success {
+  color: #03A100;
+}
+
+.result-table__row .error {
+  color: #FF6666;
+}
+
+.result-table__row .queue {
+  color: #00000066;
+}
 
 /* old */
 .input-form__buttons-holder {

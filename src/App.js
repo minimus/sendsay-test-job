@@ -1,23 +1,14 @@
-import React, { useEffect } from 'react'
-// import { useSelector, useDispatch } from 'react-redux'
-import {  } from './redux/actions'
-import InputForm from './components/inputForm/InputForm'
+import React from 'react'
 import Logo from './components/Logo'
+import InputForm from './components/inputForm/InputForm'
+import ResultList from './components/resultList/ResultList'
 
-export default function App() {
-  // const list = useSelector(state => state.list)
-  // const dispatch = useDispatch()
+const App = () => (
+  <article id="main" className="main">
+    <Logo />
+    <InputForm />
+    <ResultList />
+  </article>
+)
 
-  /* useEffect(() => {
-    if (list === null) {
-      dispatch({ type: TODO_LIST_LOAD })
-    }
-  }, [list, dispatch]) */
-
-  return (
-    <article id="main" className="main">
-      <Logo />
-      <InputForm />
-    </article>
-  )
-}
+export default App

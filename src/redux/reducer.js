@@ -1,4 +1,5 @@
 import {
+  BUTTON_DELETE_ATTACHMENT_CLICKED,
   BUTTON_FILES_CLICKED, BUTTON_SUBMIT_CLICKED,
   INPUT_FROM_MAIL,
   INPUT_FROM_NAME, INPUT_GETTING_FILES, INPUT_PROCESSING_FILES_FINISHED,
@@ -21,6 +22,11 @@ const initialState = {
   files: [],
   attachments: [],
   fileErrorFeedback: '',
+  messages: [
+    { date: '30 сентября', subject: 'bla', status: 0 },
+    { date: '30 декабря', subject: 'Тема письма, которая не поместилась в эту строку потому, что не поместилась', status: -1 },
+    { date: '30 сентября', subject: 'Тема письма, которая не поместилась в эту строку потому, что как-то не так поместилась', status: -2 },
+  ],
 }
 
 export default function (state = initialState, action) {
@@ -74,8 +80,17 @@ export default function (state = initialState, action) {
       }
     }
 
-    case INPUT_PROCESSING_FILES_FINISHED:
-      return { ...state, files: [], attachments: action.payload }
+    case INPUT_PROCESSING_FILES_FINISHED: {
+      const attachments = [...state.attachments, ...action.payload]
+      return { ...state, files: [], attachments }
+    }
+
+    case BUTTON_DELETE_ATTACHMENT_CLICKED: {
+      const idx = action.payload
+      const attachments = [...state.attachments]
+      attachments.splice(idx, 1)
+      return { ...state, attachments }
+    }
 
     case BUTTON_SUBMIT_CLICKED:
       return state
